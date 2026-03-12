@@ -32,7 +32,7 @@ export function Typewriter({
     <span className={className}>
       {display}
       {!done && (
-        <span className="ml-0.5 inline-block h-[1em] w-2 animate-pulse bg-cyan-400" />
+        <span className="ml-0.5 inline-block h-[1em] w-2 animate-pulse bg-teal-600" />
       )}
     </span>
   );

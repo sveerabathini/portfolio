@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono, JetBrains_Mono } from "next/font/google";
 import { ConsoleEasterEgg } from "./components/ConsoleEasterEgg";
+import { NoiseTexture } from "./components/NoiseTexture";
 import { ReadingProgress } from "./components/ReadingProgress";
+import { SpotlightCursor } from "./components/SpotlightCursor";
 import { ThemeProvider } from "./components/ThemeProvider";
 import "./globals.css";
 
@@ -20,7 +23,12 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Sai Krishna Veerabathini | Platform Engineering & AI Infrastructure",
   description:
     "Building intelligent cloud platforms, Kubernetes foundations, and agentic operational automation. Platform Engineering • AWS • Azure • GCP • Agentic AI",
@@ -41,7 +49,7 @@ const jsonLd = {
   "@type": "Person",
   name: "Sai Krishna Veerabathini",
   jobTitle: "DevOps Architect",
-  url: "https://saikrishna.dev",
+  url: siteUrl,
   sameAs: [
     "https://github.com/sveerabathini",
     "https://www.linkedin.com/in/sai-krishna-veerabathini-b0393340",
@@ -78,9 +86,14 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <ConsoleEasterEgg />
-          <ReadingProgress />
+          <div className="no-print">
+            <ReadingProgress />
+            <SpotlightCursor />
+            <NoiseTexture />
+          </div>
           {children}
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
