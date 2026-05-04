@@ -52,7 +52,7 @@ Track of potential improvements. Mark as done when completed.
 | # | Improvement | Status |
 |---|-------------|--------|
 | 16 | Add tech radar (Proficient vs Exploring) | ⬜ Pending |
-| 17 | Add "Open to opportunities" or availability badge | ⬜ Pending |
+| 17 | Add "Open to opportunities" or availability badge | ✅ Done |
 | 18 | Add "As featured in" section if applicable | ⬜ Pending |
 
 ---
