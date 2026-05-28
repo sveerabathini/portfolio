@@ -11,7 +11,7 @@ export const profile = {
   about:
     "I'm an Associate Engineering Manager with deep experience in Cloud, DevOps, Platform Engineering, Kubernetes, and automation. I design platforms and engineering systems that improve developer experience, reliability, and operational efficiency across AWS, Azure, and GCP — with growing focus on generative AI, agentic workflows, and continuous learning.",
   tagline:
-    "I build platforms that remove friction — golden paths, guardrails, and automation teams actually trust.",
+    "I build cloud platforms that make delivery faster, safer, and easier.",
   currently:
     "Leading platform and DevOps initiatives at Virtusa while deepening skills in generative AI, Claude, Vertex AI, and Microsoft Learn.",
   yearsExperience: "10 years 9 months",

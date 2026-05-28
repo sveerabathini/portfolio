@@ -40,9 +40,9 @@ export function PlatformStatus() {
 
   return (
     <div
-      className={`flex max-w-full shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 font-mono text-xs sm:px-3 sm:text-sm ${config.containerClass}`}
+      className={`flex w-fit max-w-full items-center gap-2 self-start rounded-lg border px-2.5 py-1.5 font-mono text-xs sm:px-3 sm:text-sm ${config.containerClass}`}
     >
-      <span className="relative flex h-2 w-2">
+      <span className="relative flex h-2 w-2 shrink-0">
         <span
           className={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-75 dark:opacity-60 ${config.pingClass}`}
         />
@@ -50,7 +50,7 @@ export function PlatformStatus() {
           className={`relative inline-flex h-2 w-2 rounded-full ${config.dotClass}`}
         />
       </span>
-      <span className={config.textClass}>{config.label}</span>
+      <span className={`break-words whitespace-normal leading-snug ${config.textClass}`}>{config.label}</span>
     </div>
   );
 }

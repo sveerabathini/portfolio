@@ -29,7 +29,7 @@ export function Typewriter({
   }, [text, speed]);
 
   return (
-    <span className={className}>
+    <span className={`block break-words whitespace-normal [overflow-wrap:anywhere] ${className}`}>
       {display}
       {!done && (
         <span className="ml-0.5 inline-block h-[1em] w-2 animate-pulse bg-accent" />

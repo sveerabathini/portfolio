@@ -6,19 +6,19 @@ export function DeploymentFlow({ steps, title = "Deployment flow" }: { steps: Fl
       <figcaption className="border-b border-border bg-surface-muted/60 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-foreground/45">
         {title}
       </figcaption>
-      <div className="overflow-x-auto bg-[#0a0f1a] p-4 dark:bg-[#030712] md:p-6">
+      <div className="overflow-x-auto bg-[#030712] p-4 md:p-6">
         <div className="flex min-w-max items-start gap-0">
           {steps.map((step, i) => (
             <div key={step.label} className="flex items-center">
               <div className="w-36 shrink-0 rounded-lg border border-accent/20 bg-accent/5 p-3 md:w-40">
-                <p className="font-mono text-[10px] text-accent">{String(i + 1).padStart(2, "0")}</p>
+                <p className="font-mono text-[10px] text-cyan-400">{String(i + 1).padStart(2, "0")}</p>
                 <p className="mt-1 font-mono text-xs font-medium text-slate-200">{step.label}</p>
                 <p className="mt-1 font-mono text-[9px] leading-relaxed text-slate-500">{step.detail}</p>
               </div>
               {i < steps.length - 1 && (
                 <div className="flex shrink-0 items-center px-1 md:px-2" aria-hidden>
                   <div className="h-px w-6 bg-gradient-to-r from-accent/40 to-highlight/40 md:w-10" />
-                  <span className="text-accent/40">→</span>
+                  <span className="text-cyan-400/50">→</span>
                 </div>
               )}
             </div>

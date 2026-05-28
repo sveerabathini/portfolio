@@ -45,17 +45,17 @@ export default function Home() {
         <div className="hero-mesh absolute inset-0" />
         <div className="hero-grid absolute inset-0 opacity-60" />
 
-        <div className="relative mx-auto grid min-w-0 max-w-7xl gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-28 md:px-10">
-          <div className="min-w-0">
-          <AnimateOnScroll variant="fade-up" delay={0}>
-            <div className="mb-6 flex flex-col gap-3 sm:mb-8 sm:flex-row sm:flex-wrap sm:items-center">
+        <div className="relative mx-auto grid w-full min-w-0 max-w-7xl grid-cols-1 gap-10 overflow-hidden px-4 py-16 sm:gap-12 sm:px-6 sm:py-20 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-28 md:px-10">
+          <div className="w-full min-w-0 max-w-full overflow-hidden">
+          <AnimateOnScroll variant="fade-up" delay={0} className="w-full max-w-full overflow-hidden">
+            <div className="mb-6 flex w-full max-w-full flex-col gap-3 overflow-hidden sm:mb-8 sm:flex-row sm:flex-wrap sm:items-start">
               <TerminalPrompt command="cat /etc/role" />
               <PlatformStatus />
             </div>
           </AnimateOnScroll>
 
-          <AnimateOnScroll variant="fade-up" delay={80}>
-            <div className="mb-6 flex items-start gap-4 sm:mb-8 sm:items-center sm:gap-5">
+          <AnimateOnScroll variant="fade-up" delay={80} className="w-full max-w-full overflow-hidden">
+            <div className="mb-6 flex w-full max-w-full items-start gap-3 overflow-hidden sm:mb-8 sm:gap-5">
               <Image
                 src={profile.profileImage}
                 alt={profile.name}
@@ -64,16 +64,16 @@ export default function Home() {
                 className="h-16 w-16 shrink-0 rounded-2xl border-2 border-accent/30 object-cover shadow-lg shadow-accent/10 sm:h-20 sm:w-20 md:h-24 md:w-24"
                 priority
               />
-              <div className="min-w-0">
-                <p className="section-label break-words font-mono text-[11px] font-medium leading-snug text-foreground/60 sm:text-xs">
+              <div className="min-w-0 flex-1 overflow-hidden">
+                <p className="section-label break-words whitespace-normal font-mono text-[11px] font-medium leading-snug text-foreground/60 sm:text-xs">
                   {profile.headline}
                 </p>
-                <p className="mt-2 break-words font-mono text-xs text-accent sm:text-sm">
+                <p className="mt-2 break-words whitespace-normal font-mono text-xs text-accent sm:text-sm">
                   {profile.title} · {profile.company}
                 </p>
               </div>
             </div>
-            <h1 className="max-w-full text-4xl font-semibold tracking-tight sm:text-5xl md:text-7xl lg:text-[5.25rem] lg:leading-[1.05]">
+            <h1 className="w-full max-w-full break-words text-4xl font-semibold tracking-tight [overflow-wrap:anywhere] sm:text-5xl md:text-7xl lg:text-[5.25rem] lg:leading-[1.05]">
               <span className="bg-gradient-to-br from-foreground via-foreground/80 to-foreground/50 bg-clip-text text-transparent">
                 {profile.firstName}
               </span>
@@ -84,30 +84,34 @@ export default function Home() {
             </h1>
           </AnimateOnScroll>
 
-          <AnimateOnScroll variant="fade-up" delay={160}>
-            <p className="mt-8 max-w-full break-words font-mono text-base leading-relaxed text-foreground/75 sm:mt-10 sm:text-lg md:text-xl">
+          <AnimateOnScroll variant="fade-up" delay={160} className="w-full max-w-full overflow-hidden">
+            <p className="mt-8 w-full max-w-full break-words font-mono text-base leading-relaxed text-foreground/75 [overflow-wrap:anywhere] sm:mt-10 sm:text-lg md:text-xl">
               <Typewriter text={profile.tagline} speed={32} />
             </p>
           </AnimateOnScroll>
 
-          <AnimateOnScroll variant="fade-up" delay={240}>
-            <p className="mt-6 break-words font-mono text-sm tracking-wide text-foreground/65 sm:mt-8">
-              {profile.location} · {profile.connections} connections · {profile.followers} followers
+          <AnimateOnScroll variant="fade-up" delay={240} className="w-full max-w-full overflow-hidden">
+            <p className="mt-6 flex w-full max-w-full flex-wrap gap-x-2 gap-y-1 font-mono text-sm text-foreground/65 sm:mt-8">
+              <span className="break-words">{profile.location}</span>
+              <span aria-hidden className="text-foreground/35">·</span>
+              <span className="break-words">{profile.connections} connections</span>
+              <span aria-hidden className="text-foreground/35">·</span>
+              <span className="break-words">{profile.followers} followers</span>
             </p>
-            <p className="mt-3 max-w-full break-words font-mono text-sm leading-relaxed text-foreground/60 sm:mt-4">
+            <p className="mt-3 w-full max-w-full break-words whitespace-normal font-mono text-sm leading-relaxed text-foreground/60 [overflow-wrap:anywhere] sm:mt-4">
               Currently: {profile.currently}
             </p>
           </AnimateOnScroll>
 
-          <AnimateOnScroll variant="fade-up" delay={280}>
-            <div className="mt-5 w-full max-w-full rounded-lg border border-accent/20 bg-accent-muted px-3 py-2.5 sm:mt-6 sm:px-4 sm:py-2">
-              <span className="block break-words font-mono text-xs font-medium leading-snug text-accent sm:text-sm">
+          <AnimateOnScroll variant="fade-up" delay={280} className="w-full max-w-full overflow-hidden">
+            <div className="mt-5 w-full max-w-full overflow-hidden rounded-lg border border-accent/20 bg-accent-muted px-3 py-2.5 sm:mt-6 sm:px-4 sm:py-2">
+              <span className="block break-words whitespace-normal font-mono text-xs font-medium leading-snug text-accent [overflow-wrap:anywhere] sm:text-sm">
                 → {profile.heroMetric}
               </span>
             </div>
           </AnimateOnScroll>
 
-          <AnimateOnScroll variant="fade-up" delay={320}>
+          <AnimateOnScroll variant="fade-up" delay={320} className="w-full max-w-full overflow-hidden">
             <div className="mt-10 flex flex-col gap-3 sm:mt-14 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
               <a href="#projects" className="btn-primary flex min-h-[48px] w-full items-center justify-center rounded-xl px-6 py-3.5 text-sm font-semibold transition hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background sm:w-auto sm:px-8">
                 View my work
@@ -130,12 +134,12 @@ export default function Home() {
             </div>
           </AnimateOnScroll>
 
-          <AnimateOnScroll variant="fade-up" delay={400}>
-            <div className="mt-8 flex flex-wrap gap-2 font-mono text-xs text-foreground/65 sm:mt-10 sm:gap-2.5 sm:text-sm">
+          <AnimateOnScroll variant="fade-up" delay={400} className="w-full max-w-full overflow-hidden">
+            <div className="mt-8 flex w-full max-w-full flex-wrap gap-2 font-mono text-xs text-foreground/65 sm:mt-10 sm:gap-2.5 sm:text-sm">
               {techStack.map((item) => (
                 <span
                   key={item}
-                  className="rounded-lg border border-border bg-surface-muted/80 px-3 py-1.5 transition hover:border-accent/35 hover:bg-accent-muted hover:text-accent sm:px-4 sm:py-2"
+                  className="max-w-full break-words rounded-lg border border-border bg-surface-muted/80 px-3 py-1.5 [overflow-wrap:anywhere] transition hover:border-accent/35 hover:bg-accent-muted hover:text-accent sm:px-4 sm:py-2"
                 >
                   {item}
                 </span>
@@ -144,7 +148,7 @@ export default function Home() {
           </AnimateOnScroll>
           </div>
 
-          <AnimateOnScroll variant="fade-up" delay={200} className="min-w-0 lg:pt-8">
+          <AnimateOnScroll variant="fade-up" delay={200} className="w-full min-w-0 max-w-full overflow-hidden lg:pt-4">
             <OpsCenter compact />
             <p className="mt-4 text-center font-mono text-[11px] text-foreground/40 lg:text-left">
               <a href="#ops-center" className="text-cyan-500 hover:underline dark:text-cyan-400">
@@ -155,18 +159,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="ops-center" className="relative border-b border-border bg-[#030712]">
+      <section id="ops-center" className="ops-center-section relative border-b border-cyan-500/10 bg-[#030712] text-slate-200">
         <div className="absolute inset-0 ops-center-grid opacity-30" aria-hidden />
-        <div className="relative mx-auto max-w-7xl px-6 py-28 md:px-10">
+        <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 md:px-10 md:py-28">
           <AnimateOnScroll variant="fade-up">
-            <p className="section-label font-mono text-xs font-medium text-cyan-400/60">Signature experience</p>
+            <p className="section-label font-mono text-xs font-medium text-cyan-300/90">Signature experience</p>
             <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-4">
-              <TerminalPrompt command="open ops-center" />
-              <h2 className="min-w-0 text-2xl font-semibold tracking-tight text-slate-100 sm:text-3xl md:text-4xl">
+              <TerminalPrompt command="open ops-center" variant="onDark" />
+              <h2 className="min-w-0 text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl md:text-4xl">
                 AI Infrastructure Control Plane
               </h2>
             </div>
-            <p className="mt-4 max-w-2xl text-slate-400">
+            <p className="mt-4 max-w-2xl text-slate-300">
               The operational surface I design for — cluster health, agent orchestration, FinOps scans, incident routing,
               and automation pipelines in one AI-native ops center. Click the tabs to explore.
             </p>

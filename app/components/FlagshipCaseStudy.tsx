@@ -39,7 +39,7 @@ export function FlagshipCaseStudy() {
       <div className="grid gap-0 lg:grid-cols-2">
         <div className="border-b border-border p-6 md:p-8 lg:border-b-0 lg:border-r">
           <p className="font-mono text-[10px] uppercase tracking-wider text-foreground/40">System architecture</p>
-          <div className="mt-4 rounded-xl border border-border bg-[#0a0f1a] p-4 dark:bg-[#030712]">
+          <div className="rounded-xl border border-border bg-[#030712] p-4">
             <ArchitectureDiagram type={study.diagram} />
           </div>
           <p className="mt-4 text-sm leading-relaxed text-foreground/55">{study.architectureOverview}</p>

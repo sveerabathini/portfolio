@@ -49,6 +49,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -123,9 +124,20 @@ html {
 
 .ops-center-grid {
   background-image:
-    linear-gradient(to right, rgba(34, 211, 238, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(34, 211, 238, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(34, 211, 238, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(34, 211, 238, 0.06) 1px, transparent 1px);
   background-size: 32px 32px;
+}
+
+/* Fixed dark surface — do not inherit light-theme foreground tokens */
+.ops-center-section {
+  color: #e2e8f0;
+}
+
+.ops-center-section .ops-center-grid {
+  background-image:
+    linear-gradient(to right, rgba(34, 211, 238, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(34, 211, 238, 0.08) 1px, transparent 1px);
 }
 
 .ops-center-scan::after {
@@ -178,6 +190,8 @@ body {
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
+  white-space: normal;
 }
 
 .hero-mesh {

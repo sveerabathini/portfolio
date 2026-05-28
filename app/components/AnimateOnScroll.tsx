@@ -47,7 +47,7 @@ export function AnimateOnScroll({
   return (
     <div
       ref={ref}
-      className={`${base} ${variants[variant]} ${className}`}
+      className={`min-w-0 max-w-full ${base} ${variants[variant]} ${className}`}
       style={{ transitionDelay: visible ? `${delay}ms` : "0ms" }}
     >
       {children}

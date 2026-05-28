@@ -76,7 +76,7 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
         <section className="mt-16 grid gap-8 lg:grid-cols-2">
           <div>
             <p className="font-mono text-[10px] uppercase tracking-wider text-foreground/40">System architecture</p>
-            <div className="mt-4 rounded-xl border border-border bg-[#0a0f1a] p-4 dark:bg-[#030712]">
+            <div className="mt-4 rounded-xl border border-border bg-[#030712] p-4">
               <ArchitectureDiagram type={study.diagram} />
             </div>
             <p className="mt-4 text-sm leading-relaxed text-foreground/55">{study.architectureOverview}</p>

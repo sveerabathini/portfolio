@@ -34,7 +34,7 @@ export function SpotlightCursor() {
 
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-500"
+      className="pointer-events-none fixed inset-0 z-0 overflow-hidden transition-opacity duration-500"
       style={{ opacity: isVisible ? 1 : 0 }}
       aria-hidden
     >

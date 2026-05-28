@@ -80,7 +80,7 @@ export function OpsCenter({ compact = false }: { compact?: boolean }) {
     return (
       <div className="ops-center ops-center-compact relative w-full min-w-0 max-w-full overflow-hidden rounded-2xl border border-cyan-500/20 bg-[#030712] shadow-2xl shadow-cyan-500/10">
         <div className="ops-center-grid absolute inset-0 opacity-40" aria-hidden />
-        <div className="relative border-b border-cyan-500/10 px-4 py-3">
+        <div className="relative border-b border-cyan-500/10 px-3 py-2.5 sm:px-4 sm:py-3">
           <div className="flex items-center justify-between">
             <span className="font-mono text-[10px] uppercase tracking-widest text-cyan-400/80">AI Ops Center</span>
             <span className="flex items-center gap-1.5 font-mono text-[10px] text-emerald-400">
@@ -89,7 +89,7 @@ export function OpsCenter({ compact = false }: { compact?: boolean }) {
             </span>
           </div>
         </div>
-        <div className="relative grid grid-cols-2 gap-1.5 p-2.5 sm:grid-cols-3 sm:gap-2 sm:p-3">
+        <div className="relative grid w-full min-w-0 grid-cols-2 gap-1.5 p-2 sm:grid-cols-3 sm:gap-2 sm:p-3">
           {TABS.map((tab) => (
             <div key={tab.id} className="min-w-0 rounded-lg border border-white/5 bg-white/[0.02] p-2 sm:p-2.5">
               <p className="truncate font-mono text-[8px] uppercase tracking-wider text-slate-500">{tab.short}</p>
@@ -103,8 +103,8 @@ export function OpsCenter({ compact = false }: { compact?: boolean }) {
             </div>
           ))}
         </div>
-        <div className="relative border-t border-cyan-500/10 px-4 py-2">
-          <p className="truncate font-mono text-[10px] text-slate-500">
+        <div className="relative border-t border-cyan-500/10 px-3 py-2 sm:px-4">
+          <p className="break-words font-mono text-[10px] leading-relaxed text-slate-500 [overflow-wrap:anywhere]">
             <span className="text-cyan-400/70">{time}</span> · {ACTIVITY[activityIdx]}
           </p>
         </div>
@@ -153,8 +153,8 @@ export function OpsCenter({ compact = false }: { compact?: boolean }) {
             onClick={() => setActiveTab(tab.id)}
             className={`shrink-0 border-b-2 px-4 py-3 font-mono text-[11px] transition md:px-6 md:text-xs ${
               activeTab === tab.id
-                ? "border-cyan-400 text-cyan-300 bg-cyan-500/5"
-                : "border-transparent text-slate-500 hover:text-slate-300 hover:bg-white/[0.02]"
+                ? "border-cyan-400 bg-cyan-500/10 text-cyan-200"
+                : "border-transparent text-slate-400 hover:bg-white/[0.02] hover:text-slate-200"
             }`}
           >
             {tab.label}
