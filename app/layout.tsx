@@ -29,18 +29,19 @@ const siteUrl =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Sai Krishna Veerabathini | Platform Engineering & AI Infrastructure",
+  title: "Sai Krishna Veerabathini | Associate Engineering Manager · Platform Engineering",
   description:
-    "Building intelligent cloud platforms, Kubernetes foundations, and agentic operational automation. Platform Engineering • AWS • Azure • GCP • Agentic AI",
+    "Associate Engineering Manager at Virtusa. 10+ years in Cloud, DevOps, Platform Engineering, Kubernetes, and IaC. Halifax, Nova Scotia, Canada.",
   openGraph: {
-    title: "Sai Krishna Veerabathini | Platform Engineering & AI Infrastructure",
+    title: "Sai Krishna Veerabathini | Associate Engineering Manager · Platform Engineering",
     description:
-      "Building intelligent cloud platforms, Kubernetes foundations, and agentic operational automation.",
+      "Platform engineering, Kubernetes, cloud automation, generative AI, and DevOps leadership. Based in Halifax, Nova Scotia.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sai Krishna Veerabathini | Platform Engineering & AI Infrastructure",
-    description: "Building intelligent cloud platforms, Kubernetes foundations, and agentic operational automation.",
+    title: "Sai Krishna Veerabathini | Associate Engineering Manager · Platform Engineering",
+    description:
+      "Platform engineering, Kubernetes, cloud automation, and generative AI for operations.",
   },
 };
 
@@ -48,19 +49,34 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Sai Krishna Veerabathini",
-  jobTitle: "DevOps Architect",
+  jobTitle: "Associate Engineering Manager",
   url: siteUrl,
   sameAs: [
     "https://github.com/sveerabathini",
-    "https://www.linkedin.com/in/sai-krishna-veerabathini-b0393340",
+    "https://www.linkedin.com/in/sai-krishna-veerabathini",
   ],
-  knowsAbout: ["Platform Engineering", "DevOps", "Kubernetes", "AWS", "Azure", "GCP", "Pulumi", "Terraform", "Agentic AI"],
+  knowsAbout: [
+    "Platform Engineering",
+    "DevOps",
+    "Kubernetes",
+    "AWS",
+    "Azure",
+    "GCP",
+    "Pulumi",
+    "Terraform",
+    "Vertex AI",
+    "Claude",
+    "Generative AI",
+    "Agentic AI",
+  ],
+  knowsLanguage: ["English", "Hindi"],
   worksFor: {
     "@type": "Organization",
     name: "Virtusa",
   },
   address: {
     "@type": "PostalAddress",
+    addressLocality: "Halifax",
     addressRegion: "Nova Scotia",
     addressCountry: "CA",
   },

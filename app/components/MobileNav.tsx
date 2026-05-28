@@ -59,7 +59,7 @@ export function MobileNav() {
             aria-hidden="true"
           />
           <nav
-            className="fixed right-6 top-20 z-50 flex flex-col gap-2 rounded-xl border border-neutral-200 bg-white p-4 shadow-xl backdrop-blur-xl dark:border-white/10 dark:bg-neutral-900/95"
+            className="fixed right-6 top-20 z-50 flex flex-col gap-2 rounded-xl border border-border bg-surface p-4 shadow-xl backdrop-blur-xl"
             role="navigation"
             aria-label="Main navigation"
           >
@@ -68,7 +68,7 @@ export function MobileNav() {
                 key={item.label}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="flex min-h-[44px] min-w-full items-center rounded-lg px-4 py-3 text-sm text-neutral-700 transition hover:bg-teal-50 hover:text-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500/30 dark:text-neutral-300 dark:hover:bg-teal-500/10 dark:hover:text-teal-400 dark:focus:ring-teal-500/30"
+                className="flex min-h-[44px] min-w-full items-center rounded-lg px-4 py-3 text-sm text-foreground/75 transition hover:bg-accent-muted hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
               >
                 {item.label}
               </a>

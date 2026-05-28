@@ -46,7 +46,7 @@ export function ContactForm() {
           name="name"
           type="text"
           required
-          className="min-h-[44px] w-full rounded-lg border border-neutral-200 bg-white px-4 py-3 text-neutral-900 placeholder-neutral-400 transition focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600/20 invalid:border-red-400 invalid:focus:ring-red-400/20 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-neutral-500 dark:invalid:border-red-500/50"
+          className="min-h-[44px] w-full rounded-lg border border-border bg-surface px-4 py-3 text-foreground placeholder-foreground/40 transition focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 invalid:border-red-400"
           placeholder="Your name"
         />
       </div>
@@ -59,7 +59,7 @@ export function ContactForm() {
           name="email"
           type="email"
           required
-          className="min-h-[44px] w-full rounded-lg border border-neutral-200 bg-white px-4 py-3 text-neutral-900 placeholder-neutral-400 transition focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600/20 invalid:border-red-400 invalid:focus:ring-red-400/20 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-neutral-500 dark:invalid:border-red-500/50"
+          className="min-h-[44px] w-full rounded-lg border border-border bg-surface px-4 py-3 text-foreground placeholder-foreground/40 transition focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 invalid:border-red-400"
           placeholder="you@example.com"
         />
       </div>
@@ -72,14 +72,14 @@ export function ContactForm() {
           name="message"
           rows={4}
           required
-          className="min-h-[120px] w-full resize-none rounded-lg border border-neutral-200 bg-white px-4 py-3 text-neutral-900 placeholder-neutral-400 transition focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600/20 focus-visible:ring-2 invalid:border-red-400 invalid:focus:ring-red-400/20 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-neutral-500 dark:invalid:border-red-500/50"
+          className="min-h-[120px] w-full resize-none rounded-lg border border-border bg-surface px-4 py-3 text-foreground placeholder-foreground/40 transition focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 invalid:border-red-400"
           placeholder="What would you like to discuss?"
         />
       </div>
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="flex min-h-[48px] min-w-[44px] items-center justify-center rounded-xl bg-neutral-900 px-6 py-3 text-sm font-medium text-white transition hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2 focus:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 dark:focus:ring-offset-neutral-950"
+        className="btn-primary flex min-h-[48px] min-w-[44px] items-center justify-center rounded-xl px-6 py-3 text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-accent disabled:cursor-not-allowed disabled:opacity-50"
       >
         {status === "submitting" ? "Sending..." : "Send message"}
       </button>

@@ -2,9 +2,9 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-white px-6 text-neutral-900 dark:bg-neutral-950 dark:text-white">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-background px-6 text-foreground">
       <div className="text-center">
-        <p className="font-mono text-sm text-teal-700 dark:text-teal-500">$ cd /nonexistent</p>
+        <p className="font-mono text-sm text-accent">$ cd /nonexistent</p>
         <p className="mt-2 font-mono text-neutral-500 dark:text-neutral-400">
           bash: cd: /nonexistent: No such file or directory
         </p>
@@ -17,7 +17,7 @@ export default function NotFound() {
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Link
             href="/"
-            className="flex min-h-[44px] min-w-[44px] items-center justify-center gap-2 rounded-xl border border-teal-600/50 px-6 py-3 font-mono text-sm text-teal-700 transition hover:border-teal-700 hover:bg-teal-50 dark:border-teal-500/30 dark:text-teal-400 dark:hover:border-teal-500/50 dark:hover:bg-teal-500/10"
+            className="flex min-h-[44px] min-w-[44px] items-center justify-center gap-2 rounded-xl border border-accent/40 px-6 py-3 font-mono text-sm text-accent transition hover:border-accent/60 hover:bg-accent-muted"
           >
             <span>$</span>
             <span>cd ~</span>

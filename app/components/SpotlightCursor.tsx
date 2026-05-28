@@ -39,7 +39,7 @@ export function SpotlightCursor() {
       aria-hidden
     >
       <div
-        className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal-500/15 blur-[120px] transition-all duration-100 ease-out dark:bg-teal-400/10"
+        className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/15 blur-[120px] transition-all duration-100 ease-out"
         style={{
           width: "500px",
           height: "500px",
