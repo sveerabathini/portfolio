@@ -121,6 +121,33 @@ html {
   }
 }
 
+.ops-center-grid {
+  background-image:
+    linear-gradient(to right, rgba(34, 211, 238, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(34, 211, 238, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.ops-center-scan::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(34, 211, 238, 0.03) 50%,
+    transparent 100%
+  );
+  height: 35%;
+  animation: scan-line 8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ops-center-scan::after {
+    animation: none;
+  }
+}
+
 .control-plane-scan::after {
   content: "";
   position: absolute;

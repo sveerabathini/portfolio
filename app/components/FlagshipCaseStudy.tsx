@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArchitectureDiagram } from "./ArchitectureDiagram";
-import { ProofTerminal } from "./ProofTerminal";
+import { DashboardMockup } from "./DashboardMockup";
 import { getFlagshipCaseStudy } from "../data/caseStudies";
 
 export function FlagshipCaseStudy() {
@@ -46,9 +46,9 @@ export function FlagshipCaseStudy() {
         </div>
 
         <div className="p-6 md:p-8">
-          <p className="font-mono text-[10px] uppercase tracking-wider text-foreground/40">Proof of work</p>
+          <p className="font-mono text-[10px] uppercase tracking-wider text-foreground/40">Operations dashboard</p>
           <div className="mt-4">
-            <ProofTerminal lines={study.proofLines.slice(0, 5)} caption={study.proofCaption} />
+            <DashboardMockup type={study.dashboardMockup} />
           </div>
         </div>
       </div>
@@ -94,6 +94,15 @@ export function FlagshipCaseStudy() {
               <p className="mt-1 text-sm text-foreground/55">{metric.label}</p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-8">
+          <Link
+            href={`/projects/${study.slug}`}
+            className="inline-flex items-center gap-2 font-mono text-sm text-accent transition hover:gap-3"
+          >
+            Read full case study with deployment flow & implementation details →
+          </Link>
         </div>
       </div>
     </article>

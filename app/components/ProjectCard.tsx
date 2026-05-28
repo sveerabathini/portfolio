@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArchitectureDiagram, type DiagramType } from "./ArchitectureDiagram";
+import { getCaseStudy } from "../data/caseStudies";
 
 export type ProjectData = {
   slug?: string;
@@ -19,6 +20,7 @@ export type ProjectData = {
 export function ProjectCard({ project, index }: { project: ProjectData; index: number }) {
   const href = project.slug ? `/projects/${project.slug}` : project.url;
   const isExternal = !project.slug;
+  const caseStudy = project.slug ? getCaseStudy(project.slug) : undefined;
 
   const card = (
     <>
@@ -93,6 +95,24 @@ export function ProjectCard({ project, index }: { project: ProjectData; index: n
         </div>
 
         {project.metric && <p className="mt-4 font-mono text-sm text-accent">→ {project.metric}</p>}
+
+        {caseStudy && (
+          <div className="mt-5 rounded-lg border border-border bg-surface-muted/40 p-4">
+            <p className="font-mono text-[10px] uppercase tracking-wider text-foreground/40">How it works</p>
+            <ol className="mt-2 space-y-1.5">
+              {caseStudy.howItWorks.map((step, i) => (
+                <li key={step.title} className="flex gap-2 text-sm text-foreground/55">
+                  <span className="shrink-0 font-mono text-xs text-accent">{i + 1}</span>
+                  <span>
+                    <strong className="font-medium text-foreground/70">{step.title}</strong>
+                    {" — "}
+                    {step.description}
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
 
         <div className="mt-auto flex items-center gap-2 pt-6 font-mono text-sm text-accent opacity-80 transition group-hover:opacity-100 md:opacity-0 md:group-hover:opacity-100">
           <span>{project.slug ? "Read case study" : project.status === "shipped" ? "View on GitHub" : "See profile"}</span>

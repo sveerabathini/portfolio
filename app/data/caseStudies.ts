@@ -1,4 +1,5 @@
 import type { DiagramType } from "../components/ArchitectureDiagram";
+import type { MockupType } from "../components/DashboardMockup";
 
 export type CaseStudy = {
   slug: string;
@@ -11,6 +12,10 @@ export type CaseStudy = {
   problem: string;
   solution: string;
   architectureOverview: string;
+  howItWorks: { title: string; description: string }[];
+  deploymentFlow: { label: string; detail: string }[];
+  dashboardMockup: MockupType;
+  implementationDetails: string[];
   workflow: { title: string; description: string }[];
   designDecisions: string[];
   inputs: string[];
@@ -40,6 +45,34 @@ export const caseStudies: CaseStudy[] = [
       "Built an event-driven pipeline with an AI triage agent that parses intent, validates against policy, routes approvals, executes on Route53, and emits structured audit events to SIEM.",
     architectureOverview:
       "Slack/Jira webhooks → event bus → triage agent + policy engine → Route53 API → audit/SIEM pipeline with stakeholder notifications.",
+    howItWorks: [
+      {
+        title: "Request arrives",
+        description: "Slack slash-command or Jira webhook posts structured payload to EventBridge.",
+      },
+      {
+        title: "Agent triages",
+        description: "Claude agent parses intent, checks policy engine, and routes for auto-approval or human review.",
+      },
+      {
+        title: "Change executes",
+        description: "Lambda calls Route53 API idempotently; audit event emitted to SIEM and Slack thread updated.",
+      },
+    ],
+    deploymentFlow: [
+      { label: "Webhook", detail: "Slack/Jira → API GW" },
+      { label: "EventBridge", detail: "Route to agent" },
+      { label: "Lambda", detail: "Triage + policy" },
+      { label: "Route53", detail: "Apply change" },
+      { label: "SIEM", detail: "Audit event" },
+    ],
+    dashboardMockup: "dns",
+    implementationDetails: [
+      "Python Lambda functions with structured JSON logging and correlation IDs",
+      "Policy rules stored as versioned YAML — tested independently of agent logic",
+      "Route53 change batches with rollback state stored in DynamoDB",
+      "CloudWatch dashboards for SLA, rejection rate, and agent latency p99",
+    ],
     workflow: [
       {
         title: "Intake & classify",
@@ -112,6 +145,34 @@ export const caseStudies: CaseStudy[] = [
       "Standardized Pulumi component library with self-service portal, environment patterns (dev/stage/prod), and CI/CD validation gates for cluster add-ons.",
     architectureOverview:
       "Developer portal → Pulumi component stacks → EKS with standardized IAM/OIDC, node groups, Fargate profiles, and enforced tagging policies.",
+    howItWorks: [
+      {
+        title: "Pick a pattern",
+        description: "Developer selects dev/stage/prod pattern from portal — sizing, networking, and compliance pre-configured.",
+      },
+      {
+        title: "Pulumi deploys",
+        description: "Component stack provisions EKS, OIDC, node groups, and baseline add-ons in one apply.",
+      },
+      {
+        title: "CI validates",
+        description: "GitHub Actions runs conformance checks; cluster registered in platform catalog with runbooks.",
+      },
+    ],
+    deploymentFlow: [
+      { label: "Portal", detail: "Golden path select" },
+      { label: "Pulumi", detail: "Component stack" },
+      { label: "EKS", detail: "Cluster + OIDC" },
+      { label: "Helm", detail: "Add-ons deploy" },
+      { label: "Catalog", detail: "Hand off to team" },
+    ],
+    dashboardMockup: "eks",
+    implementationDetails: [
+      "Pulumi ComponentResource abstractions for node groups, Fargate, and IRSA roles",
+      "Cross-account IAM roles with separate state backends per environment",
+      "Policy-as-code validation at `pulumi preview` using OPA/conftest",
+      "Platform catalog API tracks cluster metadata, owners, and runbook links",
+    ],
     workflow: [
       {
         title: "Select golden path",
@@ -180,6 +241,34 @@ export const caseStudies: CaseStudy[] = [
       "Designed an AI agent that ingests billing and utilization metrics, correlates usage patterns, flags waste and anomalies, and generates remediation runbooks with estimated savings.",
     architectureOverview:
       "Cloud APIs (Cost Explorer, CloudWatch) → scheduled ingestion → FinOps AI agent → waste detection + anomaly scoring → savings report + remediation workflow.",
+    howItWorks: [
+      {
+        title: "Daily scan",
+        description: "Step Functions orchestrates resource metric collection across accounts and regions.",
+      },
+      {
+        title: "AI analysis",
+        description: "Agent correlates utilization vs billing, flags idle resources and spend anomalies.",
+      },
+      {
+        title: "Actionable report",
+        description: "Savings report with remediation runbooks pushed to Slack and Jira for team review.",
+      },
+    ],
+    deploymentFlow: [
+      { label: "Schedule", detail: "EventBridge cron" },
+      { label: "Ingest", detail: "Cost Explorer API" },
+      { label: "Agent", detail: "Correlate + score" },
+      { label: "Report", detail: "JSON + dashboard" },
+      { label: "Alert", detail: "Slack/Jira" },
+    ],
+    dashboardMockup: "finops",
+    implementationDetails: [
+      "Step Functions state machine for multi-account scan orchestration",
+      "Baseline learning per account stored in S3 with 30-day rolling windows",
+      "Detection rules versioned separately from agent prompt for testability",
+      "Closed-loop tracking: estimated vs realized savings per remediation",
+    ],
     workflow: [
       {
         title: "Scheduled scan",

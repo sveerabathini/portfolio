@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import { AnimateOnScroll } from "./components/AnimateOnScroll";
 import { ContactForm } from "./components/ContactForm";
-import { ControlPlaneDashboard } from "./components/ControlPlaneDashboard";
+import { OpsCenter } from "./components/OpsCenter";
 import { FlagshipCaseStudy } from "./components/FlagshipCaseStudy";
 import { ProjectCard } from "./components/ProjectCard";
 import { SiteFooter } from "./components/SiteFooter";
@@ -138,33 +138,35 @@ export default function Home() {
           </div>
 
           <AnimateOnScroll variant="fade-up" delay={200} className="lg:pt-8">
-            <ControlPlaneDashboard variant="hero" />
+            <OpsCenter compact />
             <p className="mt-4 text-center font-mono text-[11px] text-foreground/40 lg:text-left">
-              AI Infrastructure Control Plane —{" "}
-              <a href="#control-plane" className="text-accent hover:underline">
-                explore full dashboard →
+              <a href="#ops-center" className="text-cyan-500 hover:underline dark:text-cyan-400">
+                Enter the AI Ops Center →
               </a>
             </p>
           </AnimateOnScroll>
         </div>
       </section>
 
-      <section id="control-plane" className="relative border-b border-border bg-surface-muted/50">
-        <div className="mx-auto max-w-7xl px-6 py-28 md:px-10">
+      <section id="ops-center" className="relative border-b border-border bg-[#030712]">
+        <div className="absolute inset-0 ops-center-grid opacity-30" aria-hidden />
+        <div className="relative mx-auto max-w-7xl px-6 py-28 md:px-10">
           <AnimateOnScroll variant="fade-up">
-            <p className="section-label font-mono text-xs font-medium text-foreground/45">Signature</p>
+            <p className="section-label font-mono text-xs font-medium text-cyan-400/60">Signature experience</p>
             <div className="mt-4 flex items-baseline gap-4">
-              <TerminalPrompt command="kubectl get controlplane" />
-              <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">AI Infrastructure Control Plane</h2>
+              <TerminalPrompt command="open ops-center" />
+              <h2 className="text-3xl font-semibold tracking-tight text-slate-100 md:text-4xl">
+                AI Infrastructure Control Plane
+              </h2>
             </div>
-            <p className="mt-4 max-w-2xl text-foreground/55">
-              A live view of how I think about platform operations — clusters, agents, FinOps, incidents, and
-              automation workflows unified in one control surface.
+            <p className="mt-4 max-w-2xl text-slate-400">
+              The operational surface I design for — cluster health, agent orchestration, FinOps scans, incident routing,
+              and automation pipelines in one AI-native ops center. Click the tabs to explore.
             </p>
           </AnimateOnScroll>
 
           <AnimateOnScroll variant="fade-up" delay={100} className="mt-12">
-            <ControlPlaneDashboard />
+            <OpsCenter />
           </AnimateOnScroll>
         </div>
       </section>

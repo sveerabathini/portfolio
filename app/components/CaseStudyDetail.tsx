@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { ArchitectureDiagram } from "./ArchitectureDiagram";
+import { DashboardMockup } from "./DashboardMockup";
+import { DeploymentFlow, HowItWorks } from "./EngineeringArtifacts";
 import { ProofTerminal } from "./ProofTerminal";
 import { TerminalPrompt } from "./TerminalPrompt";
 import type { CaseStudy } from "../data/caseStudies";
@@ -62,11 +64,44 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
         </section>
 
         <section className="mt-16">
-          <p className="font-mono text-[10px] uppercase tracking-wider text-foreground/40">System architecture</p>
-          <div className="mt-4 rounded-xl border border-border bg-[#0a0f1a] p-4 dark:bg-[#030712]">
-            <ArchitectureDiagram type={study.diagram} />
+          <div className="flex items-baseline gap-4">
+            <TerminalPrompt command="cat how-it-works.md" />
+            <h2 className="text-xl font-semibold md:text-2xl">How it works</h2>
           </div>
-          <p className="mt-4 text-sm leading-relaxed text-foreground/55">{study.architectureOverview}</p>
+          <div className="mt-6">
+            <HowItWorks steps={study.howItWorks} />
+          </div>
+        </section>
+
+        <section className="mt-16 grid gap-8 lg:grid-cols-2">
+          <div>
+            <p className="font-mono text-[10px] uppercase tracking-wider text-foreground/40">System architecture</p>
+            <div className="mt-4 rounded-xl border border-border bg-[#0a0f1a] p-4 dark:bg-[#030712]">
+              <ArchitectureDiagram type={study.diagram} />
+            </div>
+            <p className="mt-4 text-sm leading-relaxed text-foreground/55">{study.architectureOverview}</p>
+          </div>
+          <div>
+            <p className="font-mono text-[10px] uppercase tracking-wider text-foreground/40">Operations dashboard</p>
+            <div className="mt-4">
+              <DashboardMockup type={study.dashboardMockup} />
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-16">
+          <DeploymentFlow steps={study.deploymentFlow} />
+        </section>
+
+        <section className="mt-16">
+          <p className="font-mono text-[10px] uppercase tracking-wider text-foreground/40">Implementation details</p>
+          <ul className="mt-4 space-y-2">
+            {study.implementationDetails.map((detail) => (
+              <li key={detail} className="flex gap-2 text-sm text-foreground/55 before:text-accent before:content-['▹']">
+                {detail}
+              </li>
+            ))}
+          </ul>
         </section>
 
         <section className="mt-16">
