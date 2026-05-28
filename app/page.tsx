@@ -2,10 +2,13 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import { AnimateOnScroll } from "./components/AnimateOnScroll";
 import { ContactForm } from "./components/ContactForm";
-import { MobileNav } from "./components/MobileNav";
+import { ControlPlaneDashboard } from "./components/ControlPlaneDashboard";
+import { FlagshipCaseStudy } from "./components/FlagshipCaseStudy";
+import { ProjectCard } from "./components/ProjectCard";
+import { SiteFooter } from "./components/SiteFooter";
+import { SiteHeader } from "./components/SiteHeader";
 import { PlatformStatus } from "./components/PlatformStatus";
 import { TerminalPrompt } from "./components/TerminalPrompt";
-import { ThemeToggle } from "./components/ThemeToggle";
 import { Typewriter } from "./components/Typewriter";
 import {
   certifications,
@@ -14,7 +17,6 @@ import {
   languages,
   latestThinking,
   learningBadges,
-  navItems,
   principles,
   profile,
   projects,
@@ -34,45 +36,14 @@ export default function Home() {
         Skip to content
       </a>
 
-      <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10">
-          <a href="#home" className="flex items-center gap-2 font-mono text-sm transition hover:opacity-90">
-            <span className="text-accent">$</span>
-            <span className="text-accent/80">whoami</span>
-          </a>
+      <SiteHeader home />
 
-          <nav className="hidden items-center gap-8 md:flex">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md px-3 py-2 text-sm text-foreground/60 transition-colors hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent/40"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
-            <MobileNav />
-            <a
-              href={profile.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="flex min-h-[44px] items-center justify-center rounded-xl border border-accent/30 px-5 py-2.5 text-sm font-medium text-accent transition hover:border-accent/50 hover:bg-accent-muted focus:outline-none focus:ring-2 focus:ring-accent/50"
-            >
-              Let&apos;s Connect
-            </a>
-          </div>
-        </div>
-      </header>
-
-      <section id="home" className="relative min-h-[88vh] overflow-hidden border-b border-border">
+      <section id="home" className="relative overflow-hidden border-b border-border">
         <div className="hero-mesh absolute inset-0" />
         <div className="hero-grid absolute inset-0 opacity-60" />
 
-        <div className="relative mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-center px-6 py-24 md:px-10 md:py-32">
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-28 md:px-10">
+          <div>
           <AnimateOnScroll variant="fade-up" delay={0}>
             <div className="mb-8 flex flex-wrap items-center gap-3">
               <TerminalPrompt command="cat /etc/role" />
@@ -153,7 +124,7 @@ export default function Home() {
           </AnimateOnScroll>
 
           <AnimateOnScroll variant="fade-up" delay={400}>
-            <div className="mt-14 flex flex-wrap gap-2.5 font-mono text-sm text-foreground/50">
+            <div className="mt-10 flex flex-wrap gap-2.5 font-mono text-sm text-foreground/50">
               {techStack.map((item) => (
                 <span
                   key={item}
@@ -164,10 +135,41 @@ export default function Home() {
               ))}
             </div>
           </AnimateOnScroll>
+          </div>
+
+          <AnimateOnScroll variant="fade-up" delay={200} className="lg:pt-8">
+            <ControlPlaneDashboard variant="hero" />
+            <p className="mt-4 text-center font-mono text-[11px] text-foreground/40 lg:text-left">
+              AI Infrastructure Control Plane —{" "}
+              <a href="#control-plane" className="text-accent hover:underline">
+                explore full dashboard →
+              </a>
+            </p>
+          </AnimateOnScroll>
         </div>
       </section>
 
-      <section id="projects" className="border-b border-border bg-surface-muted/50">
+      <section id="control-plane" className="relative border-b border-border bg-surface-muted/50">
+        <div className="mx-auto max-w-7xl px-6 py-28 md:px-10">
+          <AnimateOnScroll variant="fade-up">
+            <p className="section-label font-mono text-xs font-medium text-foreground/45">Signature</p>
+            <div className="mt-4 flex items-baseline gap-4">
+              <TerminalPrompt command="kubectl get controlplane" />
+              <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">AI Infrastructure Control Plane</h2>
+            </div>
+            <p className="mt-4 max-w-2xl text-foreground/55">
+              A live view of how I think about platform operations — clusters, agents, FinOps, incidents, and
+              automation workflows unified in one control surface.
+            </p>
+          </AnimateOnScroll>
+
+          <AnimateOnScroll variant="fade-up" delay={100} className="mt-12">
+            <ControlPlaneDashboard />
+          </AnimateOnScroll>
+        </div>
+      </section>
+
+      <section id="projects" className="border-b border-border bg-background">
         <div className="mx-auto max-w-7xl px-6 py-28 md:px-10">
           <AnimateOnScroll variant="fade-up">
             <p className="section-label font-mono text-xs font-medium text-foreground/45">01 — Work</p>
@@ -176,45 +178,21 @@ export default function Home() {
               <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">What I&apos;ve built</h2>
             </div>
             <p className="mt-4 max-w-2xl text-foreground/55">
-              Platform engineering, automation, and AI-driven operations.
+              Engineered systems with architecture, workflows, and measurable outcomes —{" "}
+              <a href="/projects" className="text-accent hover:underline">
+                read the full case studies →
+              </a>
             </p>
           </AnimateOnScroll>
 
-          <div className="mt-16 grid gap-8 md:grid-cols-2">
+          <AnimateOnScroll variant="fade-up" delay={80} className="mt-16">
+            <FlagshipCaseStudy />
+          </AnimateOnScroll>
+
+          <div className="mt-20 grid gap-8 md:grid-cols-2">
             {projects.map((project, i) => (
               <AnimateOnScroll key={project.title} variant="fade-up" delay={i * 80}>
-                <a
-                  href={project.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group relative block overflow-hidden rounded-2xl border border-border border-l-4 border-l-accent/40 bg-surface p-8 transition duration-500 hover:-translate-y-1 hover:border-accent/30 hover:shadow-2xl hover:shadow-accent/5"
-                >
-                  <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-accent/5 blur-3xl transition group-hover:bg-accent/15" />
-                  <div className="relative">
-                    <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-                      <span className="font-mono text-3xl font-bold text-accent/40">{String(i + 1).padStart(2, "0")}</span>
-                      <div className="flex items-center gap-2">
-                        <span className="rounded-full border border-accent/25 bg-accent-muted px-2 py-0.5 font-mono text-[10px] font-medium uppercase tracking-wider text-accent">
-                          {project.status}
-                        </span>
-                        <span className="rounded-full border border-accent/25 bg-accent-muted px-3 py-1 font-mono text-xs text-accent">
-                          {project.tag}
-                        </span>
-                      </div>
-                    </div>
-                    <h3 className="text-xl font-semibold transition-colors group-hover:text-accent md:text-2xl">
-                      {project.title}
-                    </h3>
-                    <p className="mt-5 leading-7 text-foreground/55">{project.description}</p>
-                    {project.metric && (
-                      <p className="mt-3 font-mono text-sm text-accent">→ {project.metric}</p>
-                    )}
-                    <div className="mt-6 flex items-center gap-2 font-mono text-sm text-accent opacity-80 transition group-hover:opacity-100 md:opacity-0 md:group-hover:opacity-100">
-                      <span>{project.status === "shipped" ? "View on GitHub" : "See profile"}</span>
-                      <span className="transition-transform group-hover:translate-x-1">→</span>
-                    </div>
-                  </div>
-                </a>
+                <ProjectCard project={project} index={i} />
               </AnimateOnScroll>
             ))}
           </div>
@@ -559,20 +537,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="border-t border-border py-12">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 md:flex-row md:px-10">
-          <div className="flex flex-col items-center gap-2 md:items-start">
-            <p className="text-sm font-medium text-foreground/70">Designed & built by {profile.name}</p>
-            <p className="text-xs text-foreground/40">Next.js · Tailwind · Updated May 2026</p>
-          </div>
-          <a
-            href="/terminal"
-            className="group flex min-h-[44px] items-center font-mono text-sm text-accent transition hover:text-accent-light"
-          >
-            <span className="transition-transform group-hover:translate-x-0.5">$</span> curl /terminal
-          </a>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

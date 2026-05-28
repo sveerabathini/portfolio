@@ -1,13 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
-
-const navItems = [
-  { label: "Work", href: "#projects" },
-  { label: "Experience", href: "#experience" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
-];
+import { navItems } from "../data/site";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -26,7 +21,7 @@ export function MobileNav() {
   }, [open]);
 
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <button
         type="button"
         onClick={() => setOpen(!open)}
@@ -63,16 +58,27 @@ export function MobileNav() {
             role="navigation"
             aria-label="Main navigation"
           >
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="flex min-h-[44px] min-w-full items-center rounded-lg px-4 py-3 text-sm text-foreground/75 transition hover:bg-accent-muted hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
-              >
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item) =>
+              item.href.startsWith("/") && !item.href.startsWith("/#") ? (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="flex min-h-[44px] min-w-full items-center rounded-lg px-4 py-3 text-sm text-foreground/75 transition hover:bg-accent-muted hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="flex min-h-[44px] min-w-full items-center rounded-lg px-4 py-3 text-sm text-foreground/75 transition hover:bg-accent-muted hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
+                >
+                  {item.label}
+                </a>
+              ),
+            )}
           </nav>
         </>
       )}

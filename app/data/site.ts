@@ -48,10 +48,11 @@ export const skills = [
 ];
 
 export const navItems = [
-  { label: "Work", href: "#projects" },
-  { label: "Experience", href: "#experience" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Projects", href: "/projects" },
+  { label: "Control Plane", href: "/#control-plane" },
+  { label: "Experience", href: "/#experience" },
+  { label: "About", href: "/#about" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export const techStack = [
@@ -67,8 +68,10 @@ export const techStack = [
   "Agentic AI",
 ];
 
+
 export const projects = [
   {
+    slug: "eks-platform" as const,
     title: "Reusable EKS Platform Components",
     tag: "AWS · EKS · Pulumi",
     description:
@@ -76,17 +79,39 @@ export const projects = [
     metric: "Reduced onboarding from weeks to days with reusable components.",
     url: "https://github.com/sveerabathini",
     status: "shipped" as const,
+    architecture:
+      "Self-service portal → Pulumi components → EKS clusters with standardized IAM/OIDC, node groups, and Fargate profiles.",
+    workflow: [
+      "Developer selects environment pattern from portal",
+      "Pulumi stack provisions EKS + IAM/OIDC bindings",
+      "CI/CD pipeline validates and deploys cluster add-ons",
+    ],
+    inputs: ["Environment config", "Team IAM roles", "Network CIDR"],
+    outputs: ["EKS cluster", "OIDC provider", "Standardized tags"],
+    diagram: "eks-platform" as const,
   },
   {
     title: "DevOps-as-a-Service Modules",
+    slug: undefined,
     tag: "IaC · Platform · Automation",
     description:
       "Created reusable infrastructure modules and delivery patterns to accelerate onboarding, improve governance, and reduce duplication.",
     metric: "Accelerated team onboarding and cut IaC duplication across environments.",
     url: "https://github.com/sveerabathini",
     status: "shipped" as const,
+    architecture:
+      "Central module library consumed by product teams, with policy guardrails enforced at plan/apply time across AWS, Azure, and GCP.",
+    workflow: [
+      "Team imports versioned module from library",
+      "Policy engine validates against org standards",
+      "Terraform/Pulumi applies to target cloud account",
+    ],
+    inputs: ["Module catalog", "Team workspace", "Cloud credentials"],
+    outputs: ["Provisioned resources", "Compliance report", "State lock"],
+    diagram: "devops-modules" as const,
   },
   {
+    slug: "ai-dns-automation" as const,
     title: "AI-Powered DNS Automation",
     tag: "Agentic AI · Ops",
     description:
@@ -94,8 +119,19 @@ export const projects = [
     metric: "Reduced manual DNS handling and improved request turnaround time.",
     url: "https://github.com/sveerabathini",
     status: "shipped" as const,
+    architecture:
+      "Request intake → AI triage agent → validation engine → Route53 API → audit log pipeline with Slack notifications.",
+    workflow: [
+      "Ops request arrives via Slack or Jira webhook",
+      "Agent parses intent and validates against policy",
+      "Approved changes execute on Route53 with audit trail",
+    ],
+    inputs: ["DNS change requests", "Zone policies", "Approval rules"],
+    outputs: ["Route53 records", "Audit events", "Slack confirmations"],
+    diagram: "dns-automation" as const,
   },
   {
+    slug: "finops-agent" as const,
     title: "FinOps Waste Detection Agent",
     tag: "AI · Cloud Cost Optimization",
     description:
@@ -103,6 +139,16 @@ export const projects = [
     metric: "Identified cost savings opportunities for proactive optimization.",
     url: "https://github.com/sveerabathini",
     status: "conceptualized" as const,
+    architecture:
+      "Cloud APIs feed usage metrics into an AI agent that detects idle resources, anomalies, and generates actionable savings reports.",
+    workflow: [
+      "Scheduled scan pulls resource metrics from cloud APIs",
+      "AI agent correlates usage patterns and flags waste",
+      "Report generated with estimated savings and remediation steps",
+    ],
+    inputs: ["Cloud billing data", "Resource metrics", "Usage thresholds"],
+    outputs: ["Waste report", "Savings estimates", "Remediation runbooks"],
+    diagram: "finops-agent" as const,
   },
 ];
 

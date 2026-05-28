@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { caseStudies } from "./data/caseStudies";
 
 const baseUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
@@ -12,6 +13,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 1,
     },
+    {
+      url: `${baseUrl}/projects`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    },
+    ...caseStudies.map((study) => ({
+      url: `${baseUrl}/projects/${study.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    })),
     {
       url: `${baseUrl}/terminal`,
       lastModified: new Date(),
