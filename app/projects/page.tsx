@@ -5,12 +5,14 @@ import { SiteHeader } from "../components/SiteHeader";
 import { TerminalPrompt } from "../components/TerminalPrompt";
 import { ArchitectureDiagram } from "../components/ArchitectureDiagram";
 import { caseStudies } from "../data/caseStudies";
+import { createPageMetadata } from "../lib/site-url";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Projects | Sai Krishna Veerabathini",
   description:
     "Deep-dive case studies in AI-powered operations, EKS platform engineering, and FinOps intelligence.",
-};
+  path: "/projects",
+});
 
 export default function ProjectsPage() {
   return (

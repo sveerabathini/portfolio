@@ -6,6 +6,7 @@ import { NoiseTexture } from "./components/NoiseTexture";
 import { ReadingProgress } from "./components/ReadingProgress";
 import { SpotlightCursor } from "./components/SpotlightCursor";
 import { ThemeProvider } from "./components/ThemeProvider";
+import { getSiteUrl, rootMetadata } from "./lib/site-url";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -23,26 +24,11 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Sai Krishna Veerabathini | Associate Engineering Manager · Platform Engineering",
-  description:
-    "Associate Engineering Manager at Virtusa. 10+ years in Cloud, DevOps, Platform Engineering, Kubernetes, and IaC. Halifax, Nova Scotia, Canada.",
-  openGraph: {
-    title: "Sai Krishna Veerabathini | Associate Engineering Manager · Platform Engineering",
-    description:
-      "Platform engineering, Kubernetes, cloud automation, generative AI, and DevOps leadership. Based in Halifax, Nova Scotia.",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Sai Krishna Veerabathini | Associate Engineering Manager · Platform Engineering",
-    description:
-      "Platform engineering, Kubernetes, cloud automation, and generative AI for operations.",
-  },
+  ...rootMetadata,
 };
 
 const jsonLd = {

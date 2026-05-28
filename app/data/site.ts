@@ -251,7 +251,7 @@ export const experience = [
 ];
 
 export const education = {
-  degree: "Electrical and Electronic Engineer, Electrical and Electronics Engineering",
+  degree: "B.E., Electrical and Electronics Engineering",
   school: "Jawaharlal Nehru Technological University",
   period: "2009 – 2013",
   location: "India",

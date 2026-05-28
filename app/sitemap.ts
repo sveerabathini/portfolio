@@ -1,11 +1,10 @@
 import type { MetadataRoute } from "next";
 import { caseStudies } from "./data/caseStudies";
-
-const baseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+import { getSiteUrl } from "./lib/site-url";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = getSiteUrl();
+
   return [
     {
       url: baseUrl,

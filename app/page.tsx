@@ -25,10 +25,13 @@ import {
   techStack,
   testimonials,
 } from "./data/site";
+import { flagshipSlug } from "./data/caseStudies";
+
+const gridProjects = projects.filter((p) => p.slug !== flagshipSlug);
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen overflow-x-clip bg-background text-foreground">
       <a
         href="#home"
         className="sr-only focus:not-sr-only focus:absolute focus:left-6 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-white focus:outline-none focus:ring-2 focus:ring-accent"
@@ -42,33 +45,35 @@ export default function Home() {
         <div className="hero-mesh absolute inset-0" />
         <div className="hero-grid absolute inset-0 opacity-60" />
 
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-28 md:px-10">
-          <div>
+        <div className="relative mx-auto grid min-w-0 max-w-7xl gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-28 md:px-10">
+          <div className="min-w-0">
           <AnimateOnScroll variant="fade-up" delay={0}>
-            <div className="mb-8 flex flex-wrap items-center gap-3">
+            <div className="mb-6 flex flex-col gap-3 sm:mb-8 sm:flex-row sm:flex-wrap sm:items-center">
               <TerminalPrompt command="cat /etc/role" />
               <PlatformStatus />
             </div>
           </AnimateOnScroll>
 
           <AnimateOnScroll variant="fade-up" delay={80}>
-            <div className="mb-8 flex items-center gap-5">
+            <div className="mb-6 flex items-start gap-4 sm:mb-8 sm:items-center sm:gap-5">
               <Image
                 src={profile.profileImage}
                 alt={profile.name}
                 width={96}
                 height={96}
-                className="h-20 w-20 rounded-2xl border-2 border-accent/30 object-cover shadow-lg shadow-accent/10 md:h-24 md:w-24"
+                className="h-16 w-16 shrink-0 rounded-2xl border-2 border-accent/30 object-cover shadow-lg shadow-accent/10 sm:h-20 sm:w-20 md:h-24 md:w-24"
                 priority
               />
-              <div>
-                <p className="section-label font-mono text-xs font-medium text-foreground/45">{profile.headline}</p>
-                <p className="mt-2 font-mono text-sm text-accent">
+              <div className="min-w-0">
+                <p className="section-label break-words font-mono text-[11px] font-medium leading-snug text-foreground/60 sm:text-xs">
+                  {profile.headline}
+                </p>
+                <p className="mt-2 break-words font-mono text-xs text-accent sm:text-sm">
                   {profile.title} · {profile.company}
                 </p>
               </div>
             </div>
-            <h1 className="max-w-5xl text-5xl font-semibold tracking-tight md:text-7xl lg:text-[5.25rem] lg:leading-[1.05]">
+            <h1 className="max-w-full text-4xl font-semibold tracking-tight sm:text-5xl md:text-7xl lg:text-[5.25rem] lg:leading-[1.05]">
               <span className="bg-gradient-to-br from-foreground via-foreground/80 to-foreground/50 bg-clip-text text-transparent">
                 {profile.firstName}
               </span>
@@ -80,34 +85,36 @@ export default function Home() {
           </AnimateOnScroll>
 
           <AnimateOnScroll variant="fade-up" delay={160}>
-            <p className="mt-10 max-w-2xl font-mono text-lg leading-relaxed text-foreground/70 md:text-xl">
+            <p className="mt-8 max-w-full break-words font-mono text-base leading-relaxed text-foreground/75 sm:mt-10 sm:text-lg md:text-xl">
               <Typewriter text={profile.tagline} speed={32} />
             </p>
           </AnimateOnScroll>
 
           <AnimateOnScroll variant="fade-up" delay={240}>
-            <p className="mt-8 font-mono text-sm tracking-wide text-foreground/55">
+            <p className="mt-6 break-words font-mono text-sm tracking-wide text-foreground/65 sm:mt-8">
               {profile.location} · {profile.connections} connections · {profile.followers} followers
             </p>
-            <p className="mt-4 max-w-2xl font-mono text-xs leading-relaxed text-foreground/45">
+            <p className="mt-3 max-w-full break-words font-mono text-sm leading-relaxed text-foreground/60 sm:mt-4">
               Currently: {profile.currently}
             </p>
           </AnimateOnScroll>
 
           <AnimateOnScroll variant="fade-up" delay={280}>
-            <div className="mt-6 inline-flex items-center gap-2 rounded-lg border border-accent/20 bg-accent-muted px-4 py-2">
-              <span className="font-mono text-sm font-medium text-accent">→ {profile.heroMetric}</span>
+            <div className="mt-5 w-full max-w-full rounded-lg border border-accent/20 bg-accent-muted px-3 py-2.5 sm:mt-6 sm:px-4 sm:py-2">
+              <span className="block break-words font-mono text-xs font-medium leading-snug text-accent sm:text-sm">
+                → {profile.heroMetric}
+              </span>
             </div>
           </AnimateOnScroll>
 
           <AnimateOnScroll variant="fade-up" delay={320}>
-            <div className="mt-14 flex flex-wrap items-center gap-4">
-              <a href="#projects" className="btn-primary flex min-h-[48px] items-center rounded-xl px-8 py-3.5 text-sm font-semibold transition hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background">
+            <div className="mt-10 flex flex-col gap-3 sm:mt-14 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+              <a href="#projects" className="btn-primary flex min-h-[48px] w-full items-center justify-center rounded-xl px-6 py-3.5 text-sm font-semibold transition hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background sm:w-auto sm:px-8">
                 View my work
               </a>
               <a
                 href={`mailto:${profile.email}`}
-                className="flex min-h-[48px] items-center rounded-xl border border-border px-6 py-3 text-sm font-medium text-foreground/75 transition hover:border-accent/40 hover:bg-accent-muted hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent/40"
+                className="flex min-h-[48px] w-full items-center justify-center rounded-xl border border-border px-6 py-3 text-sm font-medium text-foreground/80 transition hover:border-accent/40 hover:bg-accent-muted hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent/40 sm:w-auto"
               >
                 Get in touch
               </a>
@@ -115,7 +122,7 @@ export default function Home() {
                 href={profile.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="group flex min-h-[44px] items-center text-sm text-foreground/50 transition hover:text-accent"
+                className="group flex min-h-[44px] w-full items-center justify-center text-sm text-foreground/65 transition hover:text-accent sm:w-auto sm:justify-start"
               >
                 View resume on LinkedIn
                 <span className="ml-1 inline-block transition-transform group-hover:translate-x-1">→</span>
@@ -124,11 +131,11 @@ export default function Home() {
           </AnimateOnScroll>
 
           <AnimateOnScroll variant="fade-up" delay={400}>
-            <div className="mt-10 flex flex-wrap gap-2.5 font-mono text-sm text-foreground/50">
+            <div className="mt-8 flex flex-wrap gap-2 font-mono text-xs text-foreground/65 sm:mt-10 sm:gap-2.5 sm:text-sm">
               {techStack.map((item) => (
                 <span
                   key={item}
-                  className="rounded-lg border border-border bg-surface-muted/80 px-4 py-2 transition hover:border-accent/35 hover:bg-accent-muted hover:text-accent"
+                  className="rounded-lg border border-border bg-surface-muted/80 px-3 py-1.5 transition hover:border-accent/35 hover:bg-accent-muted hover:text-accent sm:px-4 sm:py-2"
                 >
                   {item}
                 </span>
@@ -137,7 +144,7 @@ export default function Home() {
           </AnimateOnScroll>
           </div>
 
-          <AnimateOnScroll variant="fade-up" delay={200} className="lg:pt-8">
+          <AnimateOnScroll variant="fade-up" delay={200} className="min-w-0 lg:pt-8">
             <OpsCenter compact />
             <p className="mt-4 text-center font-mono text-[11px] text-foreground/40 lg:text-left">
               <a href="#ops-center" className="text-cyan-500 hover:underline dark:text-cyan-400">
@@ -153,9 +160,9 @@ export default function Home() {
         <div className="relative mx-auto max-w-7xl px-6 py-28 md:px-10">
           <AnimateOnScroll variant="fade-up">
             <p className="section-label font-mono text-xs font-medium text-cyan-400/60">Signature experience</p>
-            <div className="mt-4 flex items-baseline gap-4">
+            <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-4">
               <TerminalPrompt command="open ops-center" />
-              <h2 className="text-3xl font-semibold tracking-tight text-slate-100 md:text-4xl">
+              <h2 className="min-w-0 text-2xl font-semibold tracking-tight text-slate-100 sm:text-3xl md:text-4xl">
                 AI Infrastructure Control Plane
               </h2>
             </div>
@@ -191,12 +198,15 @@ export default function Home() {
             <FlagshipCaseStudy />
           </AnimateOnScroll>
 
-          <div className="mt-20 grid gap-8 md:grid-cols-2">
-            {projects.map((project, i) => (
+          <div className="mt-16 border-t border-border pt-16">
+            <p className="font-mono text-xs uppercase tracking-wider text-foreground/50">More projects</p>
+            <div className="mt-10 grid gap-8 md:grid-cols-2">
+            {gridProjects.map((project, i) => (
               <AnimateOnScroll key={project.title} variant="fade-up" delay={i * 80}>
                 <ProjectCard project={project} index={i} />
               </AnimateOnScroll>
             ))}
+            </div>
           </div>
         </div>
       </section>
@@ -210,7 +220,7 @@ export default function Home() {
               <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Where I&apos;ve worked</h2>
             </div>
             <p className="mt-4 max-w-2xl text-foreground/55">
-              {profile.yearsExperience} years across platform engineering, DevOps, and cloud automation.
+              {profile.yearsExperience} across platform engineering, DevOps, and cloud automation.
             </p>
           </AnimateOnScroll>
 
@@ -508,7 +518,7 @@ export default function Home() {
                 <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Let&apos;s work together</h2>
               </div>
               <p className="mt-4 leading-7 text-foreground/55">
-                Open to senior platform engineering and DevOps roles (remote, Canada). Whether you have a project in
+                Open to senior platform engineering and DevOps roles in Canada (remote). Whether you have a project in
                 mind, need a platform engineer, or want to connect — my inbox is always open.
               </p>
               <div className="mt-10 flex flex-wrap gap-3">

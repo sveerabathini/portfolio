@@ -78,7 +78,7 @@ export function OpsCenter({ compact = false }: { compact?: boolean }) {
 
   if (compact) {
     return (
-      <div className="ops-center ops-center-compact relative overflow-hidden rounded-2xl border border-cyan-500/20 bg-[#030712] shadow-2xl shadow-cyan-500/10">
+      <div className="ops-center ops-center-compact relative w-full min-w-0 max-w-full overflow-hidden rounded-2xl border border-cyan-500/20 bg-[#030712] shadow-2xl shadow-cyan-500/10">
         <div className="ops-center-grid absolute inset-0 opacity-40" aria-hidden />
         <div className="relative border-b border-cyan-500/10 px-4 py-3">
           <div className="flex items-center justify-between">
@@ -89,10 +89,10 @@ export function OpsCenter({ compact = false }: { compact?: boolean }) {
             </span>
           </div>
         </div>
-        <div className="relative grid grid-cols-2 gap-2 p-3 sm:grid-cols-3">
+        <div className="relative grid grid-cols-2 gap-1.5 p-2.5 sm:grid-cols-3 sm:gap-2 sm:p-3">
           {TABS.map((tab) => (
-            <div key={tab.id} className="rounded-lg border border-white/5 bg-white/[0.02] p-2.5">
-              <p className="font-mono text-[8px] uppercase tracking-wider text-slate-500">{tab.short}</p>
+            <div key={tab.id} className="min-w-0 rounded-lg border border-white/5 bg-white/[0.02] p-2 sm:p-2.5">
+              <p className="truncate font-mono text-[8px] uppercase tracking-wider text-slate-500">{tab.short}</p>
               <p className="mt-1 font-mono text-sm font-semibold text-cyan-300">
                 {tab.id === "clusters" && "12/12"}
                 {tab.id === "agents" && "7 active"}

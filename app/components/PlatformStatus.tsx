@@ -40,7 +40,7 @@ export function PlatformStatus() {
 
   return (
     <div
-      className={`flex items-center gap-2 rounded-lg border px-3 py-1.5 font-mono text-sm ${config.containerClass}`}
+      className={`flex max-w-full shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 font-mono text-xs sm:px-3 sm:text-sm ${config.containerClass}`}
     >
       <span className="relative flex h-2 w-2">
         <span

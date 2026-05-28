@@ -1,8 +1,8 @@
 export function TerminalPrompt({ command }: { command: string }) {
   return (
-    <div className="flex items-center gap-2 font-mono text-sm text-foreground/50">
-      <span className="text-accent">$</span>
-      <span>{command}</span>
+    <div className="flex min-w-0 max-w-full items-center gap-2 font-mono text-xs text-foreground/60 sm:text-sm">
+      <span className="shrink-0 text-accent">$</span>
+      <span className="truncate">{command}</span>
     </div>
   );
 }
